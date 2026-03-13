@@ -18,7 +18,7 @@ class KeystrokeMenuScreen(QWidget):
         main_layout = QVBoxLayout()
         main_layout.setAlignment(Qt.AlignCenter)
 
-        label = QLabel("Choose a Keystroke Experiment")
+        label = QLabel(" Choisir une expérience Keystroke")
         label.setObjectName("TitleLabel")
         label.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(label)
@@ -27,24 +27,33 @@ class KeystrokeMenuScreen(QWidget):
         btn_layout.setSpacing(24)
         btn_layout.setAlignment(Qt.AlignCenter)
 
+        # Button: K operator experiment
+        btn_k = QPushButton(" Expérience K — Temps de frappe clavier")
+        btn_k.setIcon(QIcon("icons/keyboard_white.svg"))
+        btn_k.setIconSize(QSize(32, 32))
+        btn_k.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        btn_k.setToolTip("Mesure empirique du temps moyen pour appuyer sur une touche (opérateur K)")
+        btn_k.clicked.connect(lambda: self.main_window.switch_screen(7))
+        btn_layout.addWidget(btn_k)
+
         # Button for Cognitive Load Impact experiment
-        btn_cognitive = QPushButton("  Cognitive Load Impact on Typing Performance")
-        btn_cognitive.setIcon(QIcon("icons/keyboard_white.svg"))
-        btn_cognitive.setIconSize(QSize(32, 32))
-        btn_cognitive.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        btn_cognitive.clicked.connect(lambda: self.main_window.switch_screen(5))  # Cognitive load experiment is at index 5
-        btn_layout.addWidget(btn_cognitive)
+        # btn_cognitive = QPushButton("  Cognitive Load Impact on Typing Performance")
+        # btn_cognitive.setIcon(QIcon("icons/keyboard_white.svg"))
+        # btn_cognitive.setIconSize(QSize(32, 32))
+        # btn_cognitive.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        # btn_cognitive.clicked.connect(lambda: self.main_window.switch_screen(5))  # Cognitive load experiment is at index 5
+        # btn_layout.addWidget(btn_cognitive)
 
         # Button for Keyboard vs. Mouse Navigation experiment
-        btn_navigation = QPushButton("  Keyboard vs. Mouse Text Navigation Efficiency")
-        btn_navigation.setIcon(QIcon("icons/keyboard_white.svg"))
-        btn_navigation.setIconSize(QSize(32, 32))
-        btn_navigation.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        btn_navigation.clicked.connect(lambda: self.main_window.switch_screen(6))  # Navigation experiment is at index 6
-        btn_layout.addWidget(btn_navigation)
+        # btn_navigation = QPushButton("  Keyboard vs. Mouse Text Navigation Efficiency")
+        # btn_navigation.setIcon(QIcon("icons/keyboard_white.svg"))
+        # btn_navigation.setIconSize(QSize(32, 32))
+        # btn_navigation.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        # btn_navigation.clicked.connect(lambda: self.main_window.switch_screen(6))  # Navigation experiment is at index 6
+        # btn_layout.addWidget(btn_navigation)
 
         # Back button
-        back_btn = QPushButton("Back to Main Menu")
+        back_btn = QPushButton(" ← Menu Principal")
         back_btn.clicked.connect(lambda: self.main_window.switch_screen(0))
         back_btn.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
         

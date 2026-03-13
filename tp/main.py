@@ -9,6 +9,7 @@ from settings_screen import SettingsScreen
 from keystroke_menu_screen import KeystrokeMenuScreen
 from cognitive_load_experiment import CognitiveLoadExperiment
 from navigation_experiment import NavigationExperiment
+from k_experiment import KExperiment
 
 
 class MainWindow(QMainWindow):
@@ -32,6 +33,7 @@ class MainWindow(QMainWindow):
         self.keystroke_menu_screen = KeystrokeMenuScreen(self)
         self.cognitive_load_screen = CognitiveLoadExperiment(self)
         self.navigation_screen = NavigationExperiment(self)
+        self.k_experiment_screen = KExperiment(self)
 
         # Add screens to the stack
         self.stack.addWidget(self.menu_screen)  # index 0
@@ -41,6 +43,7 @@ class MainWindow(QMainWindow):
         self.stack.addWidget(self.keystroke_menu_screen)  # index 4
         self.stack.addWidget(self.cognitive_load_screen)  # index 5
         self.stack.addWidget(self.navigation_screen)  # index 6
+        self.stack.addWidget(self.k_experiment_screen)  # index 7
 
         # Provide the stats screen reference to the Fitts screen
         self.fitts_screen.set_stats_screen(self.stats_screen)

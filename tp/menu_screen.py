@@ -18,7 +18,7 @@ class MenuScreen(QWidget):
         main_layout = QVBoxLayout()
         main_layout.setAlignment(Qt.AlignCenter)
 
-        label = QLabel("Choose an Experiment")
+        label = QLabel("Choisir une Expérience")
         label.setObjectName("TitleLabel")
         label.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(label)
@@ -27,7 +27,7 @@ class MenuScreen(QWidget):
         btn_layout.setSpacing(24)
         btn_layout.setAlignment(Qt.AlignCenter)
 
-        btn_fitts = QPushButton("  Fitts Experiment")
+        btn_fitts = QPushButton("  Fitts")
         # Use a custom SVG icon with white color for contrast
         btn_fitts.setIcon(QIcon("icons/play_white.svg"))
         btn_fitts.setIconSize(QSize(48, 48))
@@ -35,7 +35,7 @@ class MenuScreen(QWidget):
         btn_fitts.clicked.connect(lambda: self.main_window.switch_screen(1))
         btn_layout.addWidget(btn_fitts)
 
-        btn_keystroke = QPushButton("  Keystroke Experiment")
+        btn_keystroke = QPushButton("  Keystroke")
         btn_keystroke.setIcon(QIcon("icons/keyboard_white.svg"))
         btn_keystroke.setIconSize(QSize(48, 48))
         btn_keystroke.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
