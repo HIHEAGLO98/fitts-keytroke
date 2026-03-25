@@ -36,6 +36,24 @@ class KeystrokeMenuScreen(QWidget):
         btn_k.clicked.connect(lambda: self.main_window.switch_screen(7))
         btn_layout.addWidget(btn_k)
 
+        # Button: H operator experiment
+        btn_h = QPushButton("  Expérience 1 H — Changement main clavier → souris")
+        btn_h.setIcon(QIcon("icons/keyboard_white.svg"))
+        btn_h.setIconSize(QSize(32, 32))
+        btn_h.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        btn_h.setToolTip("Mesure empirique du temps de transfert main clavier vers souris (opérateur H)")
+        btn_h.clicked.connect(lambda: self.main_window.switch_screen(8))
+        btn_layout.addWidget(btn_h)
+
+        # Button: H2 operator experiment
+        btn_h2 = QPushButton("  Expérience 2 H — Changement main clavier → souris")
+        btn_h2.setIcon(QIcon("icons/keyboard_white.svg"))
+        btn_h2.setIconSize(QSize(32, 32))
+        btn_h2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        btn_h2.setToolTip("Mesure empirique du temps de transfert main clavier vers souris (opérateur H)")
+        btn_h2.clicked.connect(lambda: self.main_window.switch_screen(9))
+        btn_layout.addWidget(btn_h2)
+
         # Button for Cognitive Load Impact experiment
         # btn_cognitive = QPushButton("  Cognitive Load Impact on Typing Performance")
         # btn_cognitive.setIcon(QIcon("icons/keyboard_white.svg"))

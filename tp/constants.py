@@ -11,7 +11,7 @@ DEFAULT_B: float = 0.1
 
 # GOMS/Keystroke default operator times (ms)
 # Reference values from Card, Moran & Newell (1983)
-DEFAULT_K_MS: float = 200.0   # K : time to press one key (ms)
+DEFAULT_K_MS: float = 400.0   # K : time to press one key (ms)
 DEFAULT_H_MS: float = 400.0   # H : time to move hand between keyboard and mouse (ms)
 DEFAULT_P_MS: float = 1100.0  # P : time for one mouse pointer movement (ms)
 DEFAULT_M_MS: float = 1300.0  # M : mental preparation time (ms)
