@@ -28,7 +28,7 @@ class KeystrokeMenuScreen(QWidget):
         btn_layout.setAlignment(Qt.AlignCenter)
 
         # Button: K operator experiment
-        btn_k = QPushButton(" Expérience K — Temps de frappe clavier")
+        btn_k = QPushButton(" Expérience K - Temps de frappe clavier")
         btn_k.setIcon(QIcon("icons/keyboard_white.svg"))
         btn_k.setIconSize(QSize(32, 32))
         btn_k.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
@@ -37,44 +37,43 @@ class KeystrokeMenuScreen(QWidget):
         btn_layout.addWidget(btn_k)
 
         # Button: H operator experiment
-        btn_h = QPushButton("  Expérience 1 H — Changement main clavier → souris")
-        btn_h.setIcon(QIcon("icons/keyboard_white.svg"))
-        btn_h.setIconSize(QSize(32, 32))
-        btn_h.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        btn_h.setToolTip("Mesure empirique du temps de transfert main clavier vers souris (opérateur H)")
-        btn_h.clicked.connect(lambda: self.main_window.switch_screen(8))
-        btn_layout.addWidget(btn_h)
-
-        # Button: H2 operator experiment
-        btn_h2 = QPushButton("  Expérience 2 H — Changement main clavier → souris")
+        btn_h2 = QPushButton("  Expérience  H - Changement main clavier → souris")
         btn_h2.setIcon(QIcon("icons/keyboard_white.svg"))
         btn_h2.setIconSize(QSize(32, 32))
         btn_h2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        btn_h2.setToolTip("Mesure empirique du temps de transfert main clavier vers souris (opérateur H)")
-        btn_h2.clicked.connect(lambda: self.main_window.switch_screen(9))
+        btn_h2.setToolTip("Mesure empirique du temps de changement de dispositif main clavier vers souris (opérateur H)")
+        btn_h2.clicked.connect(lambda: self.main_window.switch_screen(8))
         btn_layout.addWidget(btn_h2)
 
-        # Button for Cognitive Load Impact experiment
-        # btn_cognitive = QPushButton("  Cognitive Load Impact on Typing Performance")
-        # btn_cognitive.setIcon(QIcon("icons/keyboard_white.svg"))
-        # btn_cognitive.setIconSize(QSize(32, 32))
-        # btn_cognitive.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        # btn_cognitive.clicked.connect(lambda: self.main_window.switch_screen(5))  # Cognitive load experiment is at index 5
-        # btn_layout.addWidget(btn_cognitive)
+        # Button: C experiment
+        btn_c = QPushButton("  Expérience C - Ouverture de fichier Souris vs Clavier")
+        btn_c.setIcon(QIcon("icons/play_white.svg"))
+        btn_c.setIconSize(QSize(32, 32))
+        btn_c.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        btn_c.setToolTip("Comparaison souris vs clavier + validation du modèle GOMS théorique")
+        btn_c.clicked.connect(lambda: self.main_window.switch_screen(9))
+        btn_layout.addWidget(btn_c)
 
-        # Button for Keyboard vs. Mouse Navigation experiment
-        # btn_navigation = QPushButton("  Keyboard vs. Mouse Text Navigation Efficiency")
-        # btn_navigation.setIcon(QIcon("icons/keyboard_white.svg"))
-        # btn_navigation.setIconSize(QSize(32, 32))
-        # btn_navigation.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        # btn_navigation.clicked.connect(lambda: self.main_window.switch_screen(6))  # Navigation experiment is at index 6
-        # btn_layout.addWidget(btn_navigation)
-
-        # Back button
-        back_btn = QPushButton(" ← Menu Principal")
-        back_btn.clicked.connect(lambda: self.main_window.switch_screen(0))
-        back_btn.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
-        
         main_layout.addLayout(btn_layout)
-        main_layout.addWidget(back_btn, alignment=Qt.AlignCenter)
+
+        main_layout.addLayout(btn_layout)
+
+
+        # Bottom row : Retour | Paramètres des durées
+        bottom_row = QHBoxLayout()
+        bottom_row.setSpacing(0)
+
+        back_btn = QPushButton("← Retour")
+        back_btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        back_btn.clicked.connect(lambda: self.main_window.switch_screen(0))
+        bottom_row.addWidget(back_btn)
+
+        settings_btn = QPushButton("⚙  Paramètres des durées")
+        settings_btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        settings_btn.setToolTip("Définir manuellement les valeurs empiriques K, H, P, M")
+        settings_btn.clicked.connect(lambda: self.main_window.switch_screen(10))
+        bottom_row.addWidget(settings_btn)
+
+        main_layout.addSpacing(2)
+        main_layout.addLayout(bottom_row)
         self.setLayout(main_layout)
