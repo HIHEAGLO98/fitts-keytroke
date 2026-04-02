@@ -1,7 +1,8 @@
 import sys
+import os
 import platform
 from PySide6.QtWidgets import QApplication, QMainWindow, QStackedWidget
-from PySide6.QtGui import QAction
+from PySide6.QtGui import QAction, QIcon
 from menu_screen import MenuScreen
 from fitts_experiment_screen import FittsExperimentScreen
 from stats_screen import StatsScreen
@@ -13,6 +14,7 @@ from k_experiment import KExperiment
 from h_2_experiment import H2Experiment
 from tp.c_experiment import CExperiment
 from tp.settings.keystroke_settings_screen import KeystrokeSettingsScreen, load_goms_settings
+from tp.settings.help import HelpDialog
 
 
 class MainWindow(QMainWindow):
@@ -22,8 +24,21 @@ class MainWindow(QMainWindow):
 
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle("Fitts & Keystroke Experiments")
+        self._action_dark = None
+        self._action_light = None
+        self.setWindowTitle("Loi de Fitts & Keystroke - HM40")
         self.resize(800, 600)
+
+        # Application icon (PNG + ICO for Windows taskbar)
+        import os as _os
+        _icon_dir = _os.path.dirname(_os.path.abspath(__file__))
+        for _icon_name in ("icons/app_icon.png", "icons/app_icon.ico"):
+            _icon_path = _os.path.join(_icon_dir, _icon_name)
+            if _os.path.exists(_icon_path):
+                self.setWindowIcon(QIcon(_icon_path))
+                break
+
+        self._current_theme = "dark"  # "dark" | "light"
 
         self.stack = QStackedWidget(self)
         self.setCentralWidget(self.stack)
@@ -56,7 +71,7 @@ class MainWindow(QMainWindow):
 
         # Provide the stats screen reference to the Fitts screen
         self.fitts_screen.set_stats_screen(self.stats_screen)
-        
+
         # Provide the stats screen reference to the keystroke experiment screens
         self.cognitive_load_screen.set_stats_screen(self.stats_screen)
         self.navigation_screen.set_stats_screen(self.stats_screen)
@@ -64,38 +79,68 @@ class MainWindow(QMainWindow):
         # Setup menu bar
         self.setup_menu()
 
+
     def setup_menu(self) -> None:
         """
         Setup the application menu bar based on the operating system.
         """
-        # Create menu bar - macOS uses native menu bar outside the window
-        if platform.system() == "Darwin":  # macOS
+        if platform.system() == "Darwin":
             self.menuBar().setNativeMenuBar(True)
         else:
             self.menuBar().setNativeMenuBar(False)
 
-        # File menu
-        file_menu = self.menuBar().addMenu("File")
-
-        # Add actions to file menu
-        exit_action = QAction("Exit", self)
+        # Fichier
+        file_menu = self.menuBar().addMenu("Fichier")
+        exit_action = QAction("Quitter", self)
         exit_action.triggered.connect(self.close)
         file_menu.addAction(exit_action)
 
-        # Navigation menu
+        # Navigation
         nav_menu = self.menuBar().addMenu("Navigation")
 
-        home_action = QAction("Main Menu", self)
+        home_action = QAction("Menu principal", self)
         home_action.triggered.connect(lambda: self.switch_screen(0))
         nav_menu.addAction(home_action)
-        
-        keystroke_menu_action = QAction("Keystroke Experiments", self)
+
+        keystroke_menu_action = QAction("Expériences Keystroke", self)
         keystroke_menu_action.triggered.connect(lambda: self.switch_screen(4))
         nav_menu.addAction(keystroke_menu_action)
 
-        settings_action = QAction("Settings", self)
+        settings_action = QAction("Paramètres Fitts", self)
         settings_action.triggered.connect(lambda: self.switch_screen(3))
         nav_menu.addAction(settings_action)
+
+        keystroke_setting = QAction("Paramètres Keystroke", self)
+        keystroke_setting.triggered.connect(lambda: self.switch_screen(10))
+        nav_menu.addAction(keystroke_setting)
+
+        # Affichage
+        display_menu = self.menuBar().addMenu("Affichage")
+
+        theme_menu = display_menu.addMenu("Thème de l'interface")
+
+        self._action_dark = QAction("Thème sombre", self)
+        self._action_dark.setCheckable(True)
+        self._action_dark.setChecked(True)
+        self._action_dark.triggered.connect(lambda: self._apply_theme("dark"))
+        theme_menu.addAction(self._action_dark)
+
+        self._action_light = QAction("Thème clair", self)
+        self._action_light.setCheckable(True)
+        self._action_light.setChecked(False)
+        self._action_light.triggered.connect(lambda: self._apply_theme("light"))
+        theme_menu.addAction(self._action_light)
+
+        # ? Aide
+        help_menu = self.menuBar().addMenu("?")
+        help_action = QAction("Aide", self)
+        help_action.setShortcut("F1")
+        help_action.triggered.connect(self._show_help)
+        help_menu.addAction(help_action)
+
+    def _show_help(self) -> None:
+        """Open the help dialog (beep + modal display)."""
+        HelpDialog(self).show_with_beep()
 
     def switch_screen(self, index: int) -> None:
         """
@@ -105,6 +150,23 @@ class MainWindow(QMainWindow):
             index (int): The index of the screen in the QStackedWidget.
         """
         self.stack.setCurrentIndex(index)
+
+    def _apply_theme(self, theme: str) -> None:
+        """Switch between dark and light QSS themes."""
+        if theme == self._current_theme:
+            return
+        self._current_theme = theme
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        qss_file = "style.qss" if theme == "dark" else "style_light.qss"
+        qss_path = os.path.join(base_dir, qss_file)
+        try:
+            with open(qss_path, "r", encoding="utf-8") as f:
+                QApplication.instance().setStyleSheet(f.read())
+        except FileNotFoundError:
+            pass
+        # Update checkmarks
+        self._action_dark.setChecked(theme == "dark")
+        self._action_light.setChecked(theme == "light")
 
 
 if __name__ == "__main__":

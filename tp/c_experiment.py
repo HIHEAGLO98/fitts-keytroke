@@ -553,6 +553,9 @@ class CExperiment(QWidget):
         else:
             super().keyPressEvent(event)
 
+    def _reset_hint_style(self) -> None:
+        """Restore hint label to its default grey style."""
+        self.hint_label.setStyleSheet("color: #aaaaaa; font-size: 14px;")
     # Shared confirmation
 
     def _on_dialog_confirmed(self) -> None:

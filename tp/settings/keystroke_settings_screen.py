@@ -60,7 +60,7 @@ class SpinRow(QFrame):
 
         # Label (left)
         lbl = QLabel(label_text)
-        lbl.setStyleSheet("color: #f3f3f3; font-size: 16px; background: transparent; border: none;")
+        lbl.setStyleSheet("font-size: 16px; background: transparent; border: none;")
         lbl.setFixedWidth(280)
         row.addWidget(lbl)
 

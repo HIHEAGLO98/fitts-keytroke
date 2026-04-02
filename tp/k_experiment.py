@@ -12,7 +12,7 @@ from constants import Settings
 
 
 NUM_TRIALS: int = 20          # Total number of key-press trials
-COGNITIVE_OFFSET_MS: float = 150.0   # Estimated cognitive reaction time (ms) to subtract
+COGNITIVE_OFFSET_MS: float = Settings.M   # Estimated cognitive reaction time (ms) to subtract
 # Letters chosen to be on the home row or adjacent – easy to locate without hunting
 LETTER_POOL: list[str] = list("FJDKSLAEIRUMVHZPQBWXGTO")
 
@@ -252,7 +252,7 @@ class KExperiment(QWidget):
             f"<b>Offset cognitif soustrait :</b> {COGNITIVE_OFFSET_MS:.0f} ms",
             "",
             f"<b>➜ K empirique (moteur) :</b> {k_motor:.1f} ms",
-            f"<b>Valeur GOMS de référence :</b> ~400 ms",
+            f"<b>Valeur GOMS de référence :</b> ~{Settings.K} ms",
         ]
         self.results_label.setText("<br>".join(lines))
         self.results_box.setVisible(True)

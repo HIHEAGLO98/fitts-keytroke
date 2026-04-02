@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d15f0af7-64f3-4c8d-b15c-f726b32f00ee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tp/c_experiment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tp/settings/keystroke_settings_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tp/settings/help.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp/h_experiment.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp/keystroke_menu_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/keystroke_menu_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/c_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/c_experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/k_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/k_experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/settings/goms_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/tp/settings/goms_settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/settings/keystroke_settings_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/settings/keystroke_settings_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/style.qss" beforeDir="false" afterPath="$PROJECT_DIR$/tp/style.qss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
