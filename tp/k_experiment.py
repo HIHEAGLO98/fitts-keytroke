@@ -12,7 +12,7 @@ from constants import Settings
 
 
 NUM_TRIALS: int = 20          # Total number of key-press trials
-COGNITIVE_OFFSET_MS: float = Settings.M   # Estimated cognitive reaction time (ms) to subtract
+COGNITIVE_OFFSET_MS: int = 150   # Estimated cognitive reaction time (ms) to subtract
 # Letters chosen to be on the home row or adjacent – easy to locate without hunting
 LETTER_POOL: list[str] = list("FJDKSLAEIRUMVHZPQBWXGTO")
 
@@ -22,7 +22,6 @@ class KExperiment(QWidget):
     Experiment screen to empirically estimate the K (keystroke) operator time.
 
     Protocol
-    --------
     1. A random letter is displayed in large font at the centre of the screen.
     2. The participant presses the matching key as quickly as possible.
     3. We record Δt = t_keypress − t_display for each trial.
@@ -57,7 +56,7 @@ class KExperiment(QWidget):
         root.setContentsMargins(32, 24, 32, 24)
 
         # Title
-        title = QLabel("Expérience K — Temps de frappe clavier")
+        title = QLabel("Expérience K - Temps de frappe clavier")
         title.setObjectName("TitleLabel")
         title.setAlignment(Qt.AlignCenter)
         root.addWidget(title)
@@ -88,7 +87,7 @@ class KExperiment(QWidget):
         self.countdown_label.setMinimumHeight(36)
         stimulus_layout.addWidget(self.countdown_label)
 
-        self.stimulus_label = QLabel("—")
+        self.stimulus_label = QLabel("-")
         self.stimulus_label.setAlignment(Qt.AlignCenter)
         font = QFont()
         font.setPointSize(120)
@@ -279,7 +278,7 @@ class KExperiment(QWidget):
         self.reaction_times = []
         self.experiment_started = False
 
-        self.stimulus_label.setText("—")
+        self.stimulus_label.setText("-")
         self.stimulus_label.setStyleSheet("")
         self.countdown_label.setText("")
         self.feedback_label.setText("")

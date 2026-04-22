@@ -50,10 +50,10 @@ Le modèle <b>GOMS/Keystroke</b> prédit le temps d'une commande
 clavier/souris en combinant les opérateurs élémentaires :
 </p>
 <ul>
-  <li><b>K</b> — frappe d'une touche (~200 ms)</li>
-  <li><b>H</b> — transfert main clavier → souris (~400 ms)</li>
-  <li><b>P</b> — déplacement de pointeur (~1100 ms)</li>
-  <li><b>M</b> — préparation mentale (~1300 ms)</li>
+  <li><b>K</b> - frappe d'une touche (~200 ms)</li>
+  <li><b>H</b> - transfert main clavier → souris (~400 ms)</li>
+  <li><b>P</b> - déplacement de pointeur (~1100 ms)</li>
+  <li><b>M</b> - préparation mentale (~1300 ms)</li>
 </ul>
 <p>
 Les expériences K, H et C permettent de mesurer empiriquement ces
@@ -63,8 +63,8 @@ théoriques de référence.
 
 <h2>Raccourcis clavier</h2>
 <ul>
-  <li><b>F1</b> — Ouvrir cette aide</li>
-  <li><b>Ctrl+O</b> — Ouvrir un fichier (expérience C)</li>
+  <li><b>F1</b> - Ouvrir cette aide</li>
+  <li><b>Ctrl+O</b> - Ouvrir un fichier (expérience C)</li>
 </ul>
 """
 

@@ -14,7 +14,7 @@ from PySide6.QtGui import QFont, QKeyEvent, QColor
 from constants import Settings
 
 # Configuration
-NUM_TRIALS: int = 5        # Trials per method (mouse / keyboard)
+NUM_TRIALS: int = 5 # Trials per method (mouse / keyboard)
 
 FAKE_FILES = [
     "rapport_annuel_2025.docx",
@@ -241,8 +241,6 @@ class CExperiment(QWidget):
     Phase CLAVIER : signal → Ctrl+O → Entrée (fichier pré-sélectionné)
 
     Δt mesuré = t_confirmation − t_signal dans les deux cas.
-
-    Résultats : tableau + graphe comparant temps mesurés vs temps GOMS théoriques.
     """
 
     def __init__(self, main_window: object) -> None:
@@ -250,7 +248,7 @@ class CExperiment(QWidget):
         self.main_window = main_window
 
         # State
-        self.phase: str = "idle"       # idle | intro | mouse | keyboard | results
+        self.phase: str = "idle" # idle | intro | mouse | keyboard | results
         self.trial: int = 0
         self.signal_time: float = 0.0
         self.waiting_signal: bool = False
@@ -301,10 +299,10 @@ class CExperiment(QWidget):
         intro_layout.addWidget(title)
 
         desc = QLabel(
-            "<b>Phase 1 — Souris</b> : quand le signal apparaît, cliquez sur "
+            "<b>Phase 1 - Souris</b> : quand le signal apparaît, cliquez sur "
             "<i>Fichier → Ouvrir…</i>, puis sur le fichier en surbrillance, "
             "puis sur <b>OK</b>.<br><br>"
-            "<b>Phase 2 — Clavier</b> : quand le signal apparaît, appuyez sur "
+            "<b>Phase 2 - Clavier</b> : quand le signal apparaît, appuyez sur "
             "<b>Ctrl+O</b>, puis sur <b>Entrée</b>.<br><br>"
             f"Chaque phase comporte <b>{NUM_TRIALS} essais</b>."
         )
@@ -396,7 +394,7 @@ class CExperiment(QWidget):
         results_layout.setSpacing(14)
         results_layout.setContentsMargins(30, 20, 30, 20)
 
-        res_title = QLabel("Résultats — Souris vs Clavier")
+        res_title = QLabel("Résultats - Souris vs Clavier")
         res_title.setObjectName("TitleLabel")
         res_title.setAlignment(Qt.AlignCenter)
         results_layout.addWidget(res_title)
@@ -456,7 +454,7 @@ class CExperiment(QWidget):
         self.mouse_times = []
         self.menu_bar.setVisible(True)
         self.content_stack.setCurrentIndex(1)
-        self.phase_label.setText("Phase 1 / 2 — SOURIS  🖱")
+        self.phase_label.setText("Phase 1 / 2 - SOURIS  🖱")
         self._next_trial()
 
     def _start_keyboard_phase(self) -> None:
@@ -465,7 +463,7 @@ class CExperiment(QWidget):
         self.keyboard_times = []
         self.menu_bar.setVisible(False)
         self.content_stack.setCurrentIndex(1)
-        self.phase_label.setText("Phase 2 / 2 — CLAVIER  ⌨")
+        self.phase_label.setText("Phase 2 / 2 - CLAVIER  ⌨")
         self._next_trial()
 
     def _next_trial(self) -> None:
@@ -498,7 +496,7 @@ class CExperiment(QWidget):
         QApplication.beep()
         self.signal_time = time.perf_counter()
         self.waiting_signal = True
-        self.signal_widget.setText("GO !")
+        self.signal_widget.setText("GO (COMMENCEZ) !")
         self.signal_widget.setStyleSheet("color: #2ecc71;")
 
         # Update countdown label
@@ -519,7 +517,7 @@ class CExperiment(QWidget):
             return
         self.signal_widget.setText("…")
         self.signal_widget.setStyleSheet("color: #aaaaaa;")
-        self.hint_label.setText("➜  Cliquez sur le fichier ★ puis sur OK")
+        self.hint_label.setText("➜ Cliquez sur le fichier ★ puis sur OK")
         self.file_dialog.populate(self.target_index)
         self._center_dialog()
         self.file_dialog.show()
@@ -585,7 +583,7 @@ class CExperiment(QWidget):
 
     def _between_phases(self) -> None:
         """Show a transition message before the keyboard phase."""
-        self.phase_label.setText("Phase 1 terminée ✔  —  Phase 2 : CLAVIER")
+        self.phase_label.setText("Phase 1 terminée ✔ - Phase 2 : CLAVIER")
         self.signal_widget.setText("")
         self.countdown_label.setText("")
         self.hint_label.setText(
@@ -596,7 +594,7 @@ class CExperiment(QWidget):
         self.trial_progress_label.setText(f"Essai : 0 / {NUM_TRIALS}")
         self.last_delta_label.setText("")
 
-        ready_btn = QPushButton("▶ Démarrer — Phase Clavier")
+        ready_btn = QPushButton("▶ Démarrer-Phase Clavier")
         ready_btn.clicked.connect(self._start_keyboard_phase)
 
         # Insert button temporarily in the trial page layout
@@ -624,8 +622,8 @@ class CExperiment(QWidget):
         P = Settings.P
         M = Settings.M
 
-        # Souris : M + H + 4P + K
-        goms_mouse = M + H + 4 * P + K
+        # Souris : M + H + 4P + 4K
+        goms_mouse = M + H + 4 * P + 4 * K
         # Clavier : M + 2K
         goms_kb = M + 2 * K
 
@@ -660,11 +658,11 @@ class CExperiment(QWidget):
         # GOMS formula reminder
         goms_lines = [
             "<b>Formules GOMS utilisées :</b>",
-            f"Souris : M + H + 4P + K = {M:.0f} + {H:.0f} + 4×{P:.0f} + {K:.0f} = <b>{goms_mouse:.0f} ms</b>",
+            f"Souris : M + H + 4P + 4K = {M:.0f} + {H:.0f} + 4×{P:.0f} + 4×{K:.0f} = <b>{goms_mouse:.0f} ms</b>",
             f"Clavier : M + 2K = {M:.0f} + 2×{K:.0f} = <b>{goms_kb:.0f} ms</b>",
             "",
-            f"<span style='color:#888'>Valeurs : K={K:.0f} ms  H={H:.0f} ms  "
-            f"P={P:.0f} ms  M={M:.0f} ms</span>",
+            f"<span style='color:#888'>Valeurs : K = {K:.0f} ms  H = {H:.0f} ms  "
+            f"P = {P:.0f} ms  M = {M:.0f} ms</span>",
         ]
         self.goms_label.setText("<br>".join(goms_lines))
 

@@ -13,11 +13,13 @@ from PySide6.QtGui import QFont, QKeyEvent, QMouseEvent
 from constants import Settings
 
 # Experiment configuration
-NUM_ROUNDS: int = 6
+NUM_ROUNDS: int = 3
 NUM_FIELDS: int = 4
 MIN_CHARS: int = 4
 H_MIN_MS: float = 80.0
 H_MAX_MS: float = 3000.0
+COGNITIVE_OFFSET_MS: int = 150  # Estimated cognitive reaction time (ms) to subtract
+
 
 FIELD_WORDS = [
     ["Marie",   "Lucas",  "Paris",    "marie@utbm.fr"],
@@ -63,7 +65,7 @@ class H2Experiment(QWidget):
         root.setSpacing(14)
         root.setContentsMargins(40, 24, 40, 24)
 
-        title = QLabel("Expérience H — Temps de transfert clavier → souris")
+        title = QLabel("Expérience H - Temps de transfert clavier → souris")
         title.setObjectName("TitleLabel")
         title.setAlignment(Qt.AlignCenter)
         root.addWidget(title)
@@ -72,7 +74,7 @@ class H2Experiment(QWidget):
             "Remplissez le formulaire ci-dessous.<br>"
             "Tapez le mot suggéré dans chaque champ, puis <b>cliquez à la souris</b> "
             "sur le champ suivant pour passer au suivant.<br>"
-            "<b>N'utilisez pas Tab</b> — le clic souris est obligatoire."
+            "<b>N'utilisez pas Tab</b> - le clic souris est obligatoire."
         )
         self.instructions_label.setWordWrap(True)
         self.instructions_label.setAlignment(Qt.AlignCenter)
@@ -333,7 +335,7 @@ class H2Experiment(QWidget):
 
         if h_ms < H_MIN_MS or h_ms > H_MAX_MS:
             self.rejected += 1
-            self._flash_status(f"⚠ Transition hors plage ({h_ms:.0f} ms) — ignorée", "#e67e22")
+            self._flash_status(f"⚠ Transition hors plage ({h_ms:.0f} ms) - ignorée", "#e67e22")
         else:
             # Mesure valide
             self.h_measures.append(h_ms)
@@ -380,13 +382,14 @@ class H2Experiment(QWidget):
     def _finish_experiment(self) -> None:
         self.active = False
         if len(self.h_measures) < 3:
-            self.status_label.setText("Pas assez de mesures valides — recommencez.")
+            self.status_label.setText("Pas assez de mesures valides - recommencez.")
             self.status_label.setStyleSheet("color: #e74c3c;")
             self.reset_btn.setVisible(True)
             return
         mean_h = statistics.mean(self.h_measures)
         std_h = statistics.stdev(self.h_measures) if len(self.h_measures) > 1 else 0.0
         median_h = statistics.median(self.h_measures)
+        mean_total = max(0.0, mean_h - COGNITIVE_OFFSET_MS)
         self._computed_h_ms = mean_h
         lines = [
             f"<b>Mesures valides :</b> {len(self.h_measures)}"
@@ -394,8 +397,9 @@ class H2Experiment(QWidget):
             f"<b>H moyen :</b> {mean_h:.1f} ms",
             f"<b>H médian :</b> {median_h:.1f} ms",
             f"<b>Écart-type :</b> {std_h:.1f} ms",
+            f"<b>Offset cognitif soustrait :</b> {COGNITIVE_OFFSET_MS:.0f} ms",
             "",
-            f"<b>➜ H empirique retenu :</b> {mean_h:.1f} ms",
+            f"<b>➜ H empirique retenu :</b> {mean_total:.1f} ms",
             f"<b>Valeur GOMS de référence :</b> ~400 ms",
         ]
         self.results_label.setText("<br>".join(lines))
@@ -446,6 +450,6 @@ class H2Experiment(QWidget):
             "Remplissez le formulaire ci-dessous.<br>"
             "Tapez le mot suggéré dans chaque champ, puis <b>cliquez à la souris</b> "
             "sur le champ suivant pour passer au suivant.<br>"
-            "<b>N'utilisez pas Tab</b> — le clic souris est obligatoire."
+            "<b>N'utilisez pas Tab</b> - le clic souris est obligatoire."
         )
         self.next_form_btn.setVisible(False)

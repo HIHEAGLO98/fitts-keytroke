@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Loi de Fitts & Keystroke - HM40")
         self.resize(800, 600)
 
-        # Application icon (PNG + ICO for Windows taskbar)
+        # Application icon
         import os as _os
         _icon_dir = _os.path.dirname(_os.path.abspath(__file__))
         for _icon_name in ("icons/app_icon.png", "icons/app_icon.ico"):

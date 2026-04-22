@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d15f0af7-64f3-4c8d-b15c-f726b32f00ee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tp/settings/help.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapport.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapport.md" beforeDir="false" afterPath="$PROJECT_DIR$/rapport.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapport.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tp/c_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/c_experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/h_2_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/h_2_experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp/k_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/k_experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp/settings/goms_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/tp/settings/goms_settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp/settings/keystroke_settings_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/settings/keystroke_settings_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp/style.qss" beforeDir="false" afterPath="$PROJECT_DIR$/tp/style.qss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/settings/help.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/settings/help.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +31,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -40,18 +46,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Cycle Ingénieur/Année 1/Semestre 2/HM40/TP/fitts_pythonQT_project/fitts_pythonQT&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "D:/Cycle Ingénieur/Année 1/Semestre 2/HM40/TP/fitts_pythonQT_project/fitts_pythonQT",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fitts_pythonQT" />
@@ -66,6 +81,8 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tp/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -84,7 +101,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-07523f343e4f-968fe969f28a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.28539.27" />
+        <option value="bundled-python-sdk-b63d5a1f7c97-b61e75351b1f-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.22158.340" />
       </set>
     </attachedChunks>
   </component>
@@ -98,6 +115,9 @@
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -108,17 +128,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tp/navigation_experiment.py</url>
-          <line>2</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
