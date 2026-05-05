@@ -114,14 +114,3 @@ QMessageBox {
     color: #f3f3f3;
     border-radius: 16px;
 }
-
-/*QProgressBar {*/
-/*    background: #dde3ec;*/
-/*    border: 1px solid #b0bdd4;*/
-/*    border-radius: 6px;*/
-/*    color: #1a1a2e;*/
-/*}*/
-/*QProgressBar::chunk {*/
-/*    background: #1a6b8a;*/
-/*    border-radius: 6px;*/
-/*}*/

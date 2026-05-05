@@ -16,7 +16,7 @@ class ExperimentArea(QWidget):
         self.experiment_screen = experiment_screen
         self.target_rect: QRect | None = None
         self.setMinimumHeight(400)
-        self.setStyleSheet("background-color: white;")
+        self.setObjectName("ExperimentArea")
 
     def new_target(self, last_click_pos: QPoint | None) -> None:
         """
@@ -40,7 +40,9 @@ class ExperimentArea(QWidget):
         super().paintEvent(event)
         if self.target_rect:
             painter = QPainter(self)
+            painter.setRenderHint(QPainter.Antialiasing, True)
             painter.setBrush(QBrush(QColor(255, 0, 0)))
+            painter.setPen(QColor(170, 0, 0))
             painter.drawEllipse(self.target_rect)
 
     def mousePressEvent(self, event) -> None:

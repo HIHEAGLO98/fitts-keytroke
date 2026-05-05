@@ -10,6 +10,7 @@ from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QColor, QTextCursor, QTextCharFormat
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
+from constants import t
 
 # Sample text for navigation tasks
 SAMPLE_TEXT = """Line 1: This is the first line of text for navigation experiments.
@@ -177,9 +178,10 @@ class NavigationExperiment(QWidget):
         button_layout.addWidget(self.manual_complete_button)
 
         # Back button
-        back_button = QPushButton("Back to Keystroke Menu")
-        back_button.clicked.connect(self.return_to_menu)
-        button_layout.addWidget(back_button)
+        self.back_button = QPushButton("Back to Keystroke Menu")
+        self.back_button.setObjectName("SmallNavButton")
+        self.back_button.clicked.connect(self.return_to_menu)
+        button_layout.addWidget(self.back_button)
 
         layout.addLayout(button_layout)
 
@@ -201,6 +203,10 @@ class NavigationExperiment(QWidget):
 
         # Highlight target after a slight delay to ensure text editor is ready
         QTimer.singleShot(100, self.highlight_target_goal)
+        self.refresh_ui()
+
+    def refresh_ui(self) -> None:
+        self.back_button.setText(t("back_keystroke_menu"))
 
     def prepare_task_display(self) -> None:
         """

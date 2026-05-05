@@ -6,6 +6,7 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton,
                                QMessageBox)
 from PySide6.QtCore import Qt, QTimer, Signal, QObject
 from PySide6.QtGui import QKeyEvent, QTextCharFormat, QColor, QFont, QTextCursor
+from constants import t
 
 # Short, simple text for typing test
 SAMPLE_TEXT = """The quick brown fox jumps over the lazy dog. 
@@ -127,12 +128,17 @@ class CognitiveLoadExperiment(QWidget):
         button_layout.addWidget(self.reset_button)
 
         # Back button
-        back_button = QPushButton("Back to Keystroke Menu")
-        back_button.clicked.connect(self.return_to_menu)
-        button_layout.addWidget(back_button)
+        self.back_button = QPushButton("Back to Keystroke Menu")
+        self.back_button.setObjectName("SmallNavButton")
+        self.back_button.clicked.connect(self.return_to_menu)
+        button_layout.addWidget(self.back_button)
 
         layout.addLayout(button_layout)
         self.setLayout(layout)
+        self.refresh_ui()
+
+    def refresh_ui(self) -> None:
+        self.back_button.setText(t("back_keystroke_menu"))
 
     def return_to_menu(self) -> None:
         """Return to keystroke menu after confirming if experiment is active"""
